@@ -196,6 +196,5 @@ Angular comes with quite a few built in directives and even allows you to create
 1. Head over to [angularjs.org/](https://angularjs.org/) and download the minified version of angular and then place it in `app/assets/javascripts`
 1. In our application.js add `//= require angular.min` 
 2. In application.js remove turbolinks
-2. In our appliction.html.erb add `ng-app="NAME_OF_APP"`to the `<body>` tag
 3. In application.html.erb remove `'data-turbolinks-track' => true` for the css and javascript tags
 4. In application.html.erb add to the body tag `ng-app = "NAME_OF_APP"`
