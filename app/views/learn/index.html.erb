@@ -1,0 +1,135 @@
+<style>
+	.val {
+		font-size: 22px;
+	}
+	.over {
+		color:green;
+		font-family: georgia;
+	}
+	.under {
+		color:red;
+		font-family: helvetica;
+	}
+	li {
+		list-style: none;
+	}
+</style>
+
+<div ng-controller="IndexCtrl">
+
+  <h1>{{title}}</h1>
+
+  <h1>{{1+2}}</h1>
+
+	 This is a binding example : <span ng-bind="person={name:'Elie', lastname: 'Schoppik'};nil;"></span>
+    {{person.name}} {{person.lastname}}
+
+<br>
+<br>
+
+<input type="checkbox" ng-model = "checked" id = "check"> <label for="check">Show text?</label>
+
+<br>
+
+<div ng-show = "checked">
+	Hello world, I'm truthy!!
+</div>
+
+<div ng-hide = "checked">
+	Hello world, I'm falsey!!
+</div>
+
+<br>
+<label for="naming">Name:</label><input type="text" ng-model = "name" id = "naming" >
+<div ng-hide = "showName">
+	Hello, {{name || "world"}}!
+</div>
+
+<div class = "magic">
+<br>
+	Let's see if you know the password...
+	<input class = "magicInput" type="text" autofocus ng-model ="typing" placeholder ="type for some magic" style = "width:300px;">
+
+		<h2>{{typing}}</h2>
+</div>
+<h3>{{notice}}</h3>
+
+<h1>Counter with styling example: </h1>
+
+<p ng-class = "{'over': value >0, 'under' : value <0}">
+	<span class="val">{{value}}</span>
+</p>
+
+<button ng-click = "addOne()">
+	Add One
+</button>
+
+<button ng-click = "subtractOne()">
+	Subtract One
+</button>
+
+
+<h1>  We have {{books.length}}
+  <ng-pluralize count = "books.length" when ="{'1' : 'book', 'other' : 'books'}">
+  </ng-pluralize>
+</h1>
+
+	<p style = "color:red"; ng-if = "books.length ==0"> Sorry we're all out!</p>
+  <div ng-if = "books.length > 0">
+  	Search through our catalog here:
+
+  <input type="search" ng-model="search" placeholder="filter books..." />
+  	<br>
+
+  	<ul ng-repeat = "book in books | filter:search | orderBy: '-rating' | limitTo: 5">
+  		<li>
+  			{{book.title | uppercase}}
+  		</li>
+  		<li>
+  			Rating - {{book.rating}}
+  		</li>
+  		<li>
+  			Price - {{book.price | addTax : .15 | currency}}
+  		</li>
+  		<li>
+  			<button ng-click ="boughtBook(book)">Buy this Book </button>
+
+				<!-- this breaks once we start ordering the array around! -->
+  			<!-- <button ng-click ="boughtBook($index)">Buy this Book </button> -->
+
+  		</li>
+
+  	</ul>
+
+</div>
+
+<form action="javascript:void(0);" ng-submit="add()">
+<p>
+	<label for="title">Title</label>	<input type="text" id="title" ng-model = "new_title">
+</p>
+<p>
+	<label for="rating">Rating</label><input type="number" id="rating" ng-model = "new_rating">
+</p>
+<p>
+	<label for="price">Price</label><input type="text" id="price" ng-model = "new_price">
+</p>
+<p>
+
+	<input type="submit" ng-model ="formValue" value="Add a new book">
+	<button ng-click = "cancel()">Cancel</button>
+</p>
+</form>
+
+</div>
+
+
+<!-- filters:
+orderBy: 'rating'
+orderBy: '-rating'
+orderBy: 'title'
+ -->
+
+ <!-- THINGS TO SHOW
+  ng-show
+ 	ng-hide
+ -->
