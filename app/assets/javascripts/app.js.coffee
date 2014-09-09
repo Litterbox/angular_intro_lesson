@@ -5,7 +5,25 @@ TestApp = angular.module "TestApp", []
 TestApp.controller "IndexCtrl", ($scope) ->
 	$scope.title = "Let's learn angular"
 	$scope.value = 0
-	$scope.editForm = false
+
+	$scope.instructor =
+		first: "Elie"
+		last: "Schoppik"
+
+	$scope.friends = [{
+		name: "Bob",
+		style: "red"
+	},
+	{
+		name: "Joe",
+		style: "green"
+	},
+	{
+		name: "Tom",
+		style: "purple"
+	}]
+
+	$scope.names = []
 
 	$scope.addOne = ->
 		$scope.value++
@@ -45,7 +63,8 @@ TestApp.controller "IndexCtrl", ($scope) ->
 	]
 
 	$scope.boughtBook =(book) ->
-
+		# console.log(book)
+		# console.log($scope.books)
 		# $scope.books.splice(book,1)
 		# # need this refactor when the array gets out of order
 		$scope.books.splice($scope.books.indexOf(book),1)
@@ -54,9 +73,11 @@ TestApp.controller "IndexCtrl", ($scope) ->
 	$scope.$watch "typing", ->
 		console.log $scope.typing
 		if $scope.typing == "answer"
-			$scope.typing = "You got it!"
-			$(".magic").hide()
-			$('.magic :input').prop("disabled", true);
+			# Better refactor!
+			$scope.removed = true
+			# ANYTIME YOU USE ANGULAR
+			# $(".magic").hide()
+			# $('.magic :input').prop("disabled", true);
 			$scope.notice = "Well done!"
 
 	$scope.add = ->
@@ -71,15 +92,13 @@ TestApp.controller "IndexCtrl", ($scope) ->
 		$scope.new_price = ""
 
 	$scope.cancel = ->
-			$scope.editForm = false
 			$scope.new_title = ""
-			$scope.new_rating = ""
+			$scope.new_rating = 0
 			$scope.new_price = ""
 
 TestApp.filter 'makeUppercase', ->
-  item ->
+  (item) ->
       item.toUpperCase()
-
 
 TestApp.filter 'addTax', ->
   (item, rate) ->

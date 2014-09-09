@@ -21,9 +21,16 @@
 
   <h1>{{1+2}}</h1>
 
-	 This is a binding example : <span ng-bind="person={name:'Elie', lastname: 'Schoppik'};nil;"></span>
-    {{person.name}} {{person.lastname}}
+  {{instructor.first}} {{instructor.last}}
 
+<br>
+<br>
+
+   	<input type="button" value="set color" ng-click="myStyle={color:'red'}">
+   	<input type="button" value="set background" ng-click="myStyle={background:'red'}">
+		<input type="button" value="clear" ng-click="myStyle={}">
+		<br>
+		<span ng-style="myStyle">Color me!</span>
 <br>
 <br>
 
@@ -40,15 +47,31 @@
 </div>
 
 <br>
-<label for="naming">Name:</label><input type="text" ng-model = "name" id = "naming" >
+<label for="naming">Name:</label>
+<input type="text" ng-model = "name" id = "naming" >
 <div ng-hide = "showName">
 	Hello, {{name || "world"}}!
 </div>
 
-<div class = "magic">
+<br>
+<h2>Here are my colorful friends!</h2>
+<div ng-repeat = "friend in friends">
+	<span ng-style = "{color: '{{friend.style}}'} ">{{friend.name}}</span><br>
+</div>
+
+<h2>Type in your favorite color</h2>
+<input type="text" ng-model="favoriteColor">
+ <h1 ng-style="{color: favoriteColor || 'purple'}">This must be your favorite color!</h1>
+
+
+<h2>Let's take a look at ng-list!</h2>
+<input ng-model="names" ng-list='/[- | ]/'>
+{{names}}
+
+<div class = "magic" ng-hide = "removed">
 <br>
 	Let's see if you know the password...
-	<input class = "magicInput" type="text" autofocus ng-model ="typing" placeholder ="type for some magic" style = "width:300px;">
+	<input class = "magicInput" type="text" ng-model ="typing" placeholder ="type for some magic" style = "width:300px;">
 
 		<h2>{{typing}}</h2>
 </div>
@@ -82,8 +105,9 @@
   	<br>
 
   	<ul ng-repeat = "book in books | filter:search | orderBy: '-rating' | limitTo: 5">
+
   		<li>
-  			{{book.title | uppercase}}
+  			{{book.title | makeUppercase}}
   		</li>
   		<li>
   			Rating - {{book.rating}}
@@ -116,9 +140,11 @@
 <p>
 
 	<input type="submit" ng-model ="formValue" value="Add a new book">
-	<button ng-click = "cancel()">Cancel</button>
 </p>
+
 </form>
+<button ng-click = "cancel()">Cancel</button>
+<!-- put this outside the form or it will submit it! -->
 
 </div>
 

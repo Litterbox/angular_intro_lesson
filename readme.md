@@ -56,54 +56,27 @@ Because the view is just a projection of the model, the controller is completely
 #####Two-Way Data Binding
 ![Two-Way Data Binding](twoway.png)
 
+####Exercise:
+
+1. Create a new rails app and include angular
+2. Add your app to the body tag 
+3. Create your first controller and inside set a `greeting` variable using and display it with Angular templating.
+
 ###Built-In Directives:
  
 Angular comes with quite a few built in directives and even allows you to create your own which we will learn later.
- 
-  * `ngBind` - this attribute tells Angular to replace the text content of the specified HTML element with the value of a given expression, and to update the text content when the value of that expression changes.
-  
-* Using the `{{}}` in angular templating can leave a bunch of `{{}}` curly braces on our screen, so we can also use `ng-bind`
-  
-  ```
-  <div ng-app>
-    1 + 2 = <span ng-bind="1+2"></span>
-  </div>
-    
-  ```
-
-* Use `ng-bind` to set variables
-  
-  ```
-  <div ng-app>
-    1 + 2 = <span ng-bind="answer =3"></span> <br>
-    and we can use the answer somewhere else, divide {{answer}} by 2
-    
-  </div>
-    ```
-      
-####Exercise:
-
-1. Set a `greeting` to a variable using `ng-bind` and display it.
-2. Try to set a `name` and `salutation` in the same `ng-bind` statement. Display them in the html. What is problematic about doing this?  *(Hint: use `;` to separate the declaractions)* 
-3. Set a few different variables in a single `ng-bind` what determines what gets displayed?
-4. How could we get around the problem of an `ng-bind` always displaying something?
-    
+   
 ###More Directives
 
   * `ngStyle` - directive allows you to set CSS style on an HTML element conditionally.
   
   ````
   <div ng-app>
-    <span ng-bind="person={name:'john', lastname: 'doe'};nill;"></span>
-    {{person.name}}
-  </div>
-  ````
-
-  ````
-  <div ng-app>
-      <span ng-bind="myStyle={color:'red'};nill;"></span>
-      The following text is <span ng-Style="myStyle">important</div>
-  </div>
+     	<input type="button" value="set color" ng-click="myStyle={color:'red'}">
+		<input type="button" value="set background" ng click="myStyle={'background-color':'blue'}">
+		<input type="button" value="clear" ng-click="myStyle={}">
+		<br>
+		<span ng-style="myStyle">Sample Text</span>  </div>
   ````
   
   * `ng-repeat` - directive instantiates a template once per item from a collection. Each template instance gets its own scope, where the given loop variable is set to the current collection item, and $index is set to the item index or key.
@@ -123,8 +96,7 @@ Angular comes with quite a few built in directives and even allows you to create
   
 ###Exercise
  
-- Make an array of friends that are objects where each has a `name` and `style` attribute,  
-  e.g. `friends=[{name: 'moe', style: {color: blue}}]`, and repeat over them, displaying their style also.  
+- Make an array of friends that are objects where each has a `name` and `style` attribute and repeat over them, displaying their style also.  
 
 
 ###Angular Forms
@@ -142,30 +114,11 @@ Angular comes with quite a few built in directives and even allows you to create
 	Example 1
 	
 ```
- 	
- 	<div ng-app>
- 		<form>
- 			<input type="text" ng-model="favoriteColor">
-  	</form>
- 		
- 		Your favorite color is  {{favoriteColor}}
- 	</div>
+<h2>Type in your favorite color</h2>
+<input type="text" ng-model="favoriteColor">
+ <h1 ng-style="{color: favoriteColor || 'purple'}">This must be your favorite color!</h1>
 ```
-     
-     Example 2:
-     
-     ```
-   		<form>
-   			<input type="text" ng-model="favoriteColor">
-   			<input type="checkbox" ng-model="showTemplate">
-    	</form>
-   		<div ng-show="showTemplate">
-   		Your favorite color is  <span ng-style="{color: favoriteColor}">red</span>
-   		</div>
-     ```
-     
-
-     
+          
      
    * `ngList` - Text input that converts between a delimited string and an array of strings. The delimiter can be a fixed string (by default a comma) or a regular expression.
 
@@ -183,13 +136,11 @@ Angular comes with quite a few built in directives and even allows you to create
      </div>
     ````
      	
-
-
-
-###Some Cool Features
+###Some Other cool directives
    * `ng-cloak` - directive is used to prevent the Angular html template from being briefly displayed by the browser in its raw (uncompiled) form while your application is loading.
    * `ng-pluralize` - directive that displays messages according to en-US localization rules
    * `ng-filter` - Selects a subset of items from array and returns it as a new array
+   * To create custom filter: `NAME_OF_APP.filter 'NAME_OF_FILTER', ->`
    
 ## How to include Angular in our Rails App
 
@@ -198,3 +149,6 @@ Angular comes with quite a few built in directives and even allows you to create
 2. In application.js remove turbolinks
 3. In application.html.erb remove `'data-turbolinks-track' => true` for the css and javascript tags
 4. In application.html.erb add to the body tag `ng-app = "NAME_OF_APP"`
+5. Create an app.js or app.js.coffee file in your `app/assets/javascripts` directory
+6. Include `NAME_OF_APP = angular.module "NAME_OF_APP", []` this array will be a list of dependencies we will include as we explore more about Angular
+7. To create a controller (in CoffeeScript) `NAME_OF_APP.controller "IndexCtrl", ($scope) ->`
