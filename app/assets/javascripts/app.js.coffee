@@ -6,6 +6,8 @@ TestApp.controller "IndexCtrl", ($scope) ->
 	$scope.title = "Let's learn angular"
 	$scope.value = 0
 
+	# $scope.checked = true
+
 	$scope.instructor =
 		first: "Elie"
 		last: "Schoppik"

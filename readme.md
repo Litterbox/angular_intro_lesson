@@ -93,7 +93,6 @@ Angular comes with quite a few built in directives and even allows you to create
 
   * `ngInit`- directive allows you to evaluate an expression in the current scope
 
-
 ###Exercise
 
 - Make an array of friends that are objects where each has a `name` and `style` attribute and repeat over them, displaying their style also.
