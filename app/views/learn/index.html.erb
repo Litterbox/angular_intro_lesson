@@ -103,9 +103,10 @@
 
   <input type="search" ng-model="search" placeholder="filter books..." />
   	<br>
-
+	<!-- {{books}} -->
   	<ul ng-repeat = "book in books | filter:search | orderBy: '-rating' | limitTo: 5">
-
+		<!-- Re-ordered index - {{$index}} -->
+		<!-- Actual index - {{books.indexOf(book)}} -->
   		<li>
   			{{book.title | makeUppercase}}
   		</li>
@@ -116,10 +117,10 @@
   			Price - {{book.price | addTax : .15 | currency}}
   		</li>
   		<li>
-  			<button ng-click ="boughtBook(book)">Buy this Book </button>
+  			<!-- <button ng-click ="boughtBook(book)">Buy this Book </button> -->
 
 				<!-- this breaks once we start ordering the array around! -->
-  			<!-- <button ng-click ="boughtBook($index)">Buy this Book </button> -->
+  			<button ng-click ="boughtBook($index)">Buy this Book </button>
 
   		</li>
 
@@ -132,7 +133,7 @@
 	<label for="title">Title</label>	<input type="text" id="title" ng-model = "new_title">
 </p>
 <p>
-	<label for="rating">Rating</label><input type="number" id="rating" ng-model = "new_rating">
+	<label for="rating">Rating</label><input type="number"  min="0" max="5" id="rating" ng-model = "new_rating">
 </p>
 <p>
 	<label for="price">Price</label><input type="text" id="price" ng-model = "new_price">

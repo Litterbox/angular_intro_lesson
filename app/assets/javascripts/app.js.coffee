@@ -70,6 +70,7 @@ TestApp.controller "IndexCtrl", ($scope) ->
 		$scope.books.splice($scope.books.indexOf(book),1)
 
 
+
 	$scope.$watch "typing", ->
 		console.log $scope.typing
 		if $scope.typing == "answer"
