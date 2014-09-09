@@ -9,8 +9,9 @@ ng-app
 ng-model
 ng-show
 ng-hide
+ng-style
 ng-class
-ng-bind
+ng-list
 ng-pluralize
 ng-repeat
 ng-show
@@ -27,11 +28,13 @@ custom filters
 
 3. Create an array of objects called `favoriteMovies` and use the `ng-repeat` directive to iterate over the array of `favoriteMovies`.
 
-5. Add a form outside the `ng-repeat` in step `3` that allows you to change the background color of the application. This will require you to look at the documentation for [ng-style](https://docs.angularjs.org/api/ng/directive/ngStyle)
+5. Add a form outside the `ng-repeat` in step `3` that allows you to change the background color of the application. This will require you to look at the documentation for [ng-style](https://docs.angularjs.org/api/ng/directive/ngStyle) or review the notes.
+
+7. Filter your `ng-repeat` of movies and order them by name and limit the number displayed to 3
 
 6. Create a custom filter to reverse the letters of the title of your favorite movies
 
-7. Create a function called removeFavorite that removes a favorite movie from your array.
+7. Write a function called removeFavorite that removes a favorite movie from your array.
 
 7. Include the text "I have `{{favoriteMovies.length}}` favorite(s)" and use ng-pluralize so that the text displays favorite when there is 1 movie and favorites in all other cases
 
@@ -39,13 +42,13 @@ custom filters
 
 9. Check out [ng-keypress](https://docs.angularjs.org/api/ng/directive/ngKeypress) and create an input field and a counter that increments every time the user types a letter.
 
-11. Create a form that takes in a word and then hides it.
+11. Create a form that takes in a word and then hides it when the form is submitted.
 
 Bonus:
 
 1. Write this all in CoffeeScript!
 3. Go to Google fonts and pick out three favorite fonts and drop them into your `head`, then use the `ng-style` and `ng-model` directives to change the text color and font.
-4. Use $watch to listen to when the secret word is typed and using your counter from exercise `9` show the word if the user has typed more than 20 letters
+4. Use $watch to listen to when the secret word is typed and using your counter from exercise `10` show the secret word if the user has typed more than 20 characters
 
 
 
