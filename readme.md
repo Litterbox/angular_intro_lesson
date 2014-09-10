@@ -136,4 +136,6 @@ Angular comes with quite a few built in directives and even allows you to create
    * `ng-filter` - Selects a subset of items from array and returns it as a new array
    * To create custom filter: `NAME_OF_APP.filter 'NAME_OF_FILTER', ->`
    
+### Some additional reading about scope 
 
+Learn more about scope in angular - <https://github.com/angular/angular.js/wiki/Understanding-Scopes> 
