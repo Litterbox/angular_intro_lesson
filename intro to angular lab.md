@@ -30,7 +30,7 @@ custom filters
 
 3. Create an array of objects called `favoriteMovies` and use the `ng-repeat` directive to iterate over the array of `favoriteMovies`.
 
-5. Add a form outside the `ng-repeat` in step `3` that allows you to change the background color of the application. This will require you to look at the documentation for [ng-style](https://docs.angularjs.org/api/ng/directive/ngStyle) or review the notes.
+5. Add a form outside the `ng-repeat` in step `4` that allows you to change the background color of the application. This will require you to look at the documentation for [ng-style](https://docs.angularjs.org/api/ng/directive/ngStyle) or review the notes.
 
 7. Filter your `ng-repeat` of movies and order them by name and limit the number displayed to 3
 
