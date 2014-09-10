@@ -24,6 +24,8 @@ custom filters
 
 1. Create a new rails app and include [angular](https://angularjs.org/) in your application
 
+1. Create a rails controller and template to render a basic home page
+
 1. Create your app and controller in an app.js or app.js.coffee file
 
 3. Create an array of objects called `favoriteMovies` and use the `ng-repeat` directive to iterate over the array of `favoriteMovies`.
