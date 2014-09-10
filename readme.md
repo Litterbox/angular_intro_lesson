@@ -45,6 +45,19 @@ Because the view is just a projection of the model, the controller is completely
 #####Two-Way Data Binding
 ![Two-Way Data Binding](twoway.png)
 
+## How to include Angular in our Rails App
+
+1. Head over to [angularjs.org/](https://angularjs.org/) and download the minified version of angular and then place it in `app/assets/javascripts`
+1. In our application.js add `//= require angular.min` 
+2. In application.js remove turbolinks
+3. In application.html.erb remove `'data-turbolinks-track' => true` for the css and javascript tags
+4. Generate a controller and an index action + view `rails g controller CONTROLLER_NAME index`
+4. In application.html.erb add to the body tag `ng-app = "NAME_OF_APP"`
+5. Create an app.js or app.js.coffee file in your `app/assets/javascripts` directory
+6. Include `NAME_OF_APP = angular.module "NAME_OF_APP", []` this array will be a list of dependencies we will include as we explore more about Angular
+7. To create a controller (in CoffeeScript) `NAME_OF_APP.controller "IndexCtrl", [ '$scope' ($scope) -> ]`
+8. For now, include your angular code in your index.html.erb (this will change)
+
 ####Exercise:
 
 1. Create a new rails app and include angular
@@ -99,15 +112,7 @@ Angular comes with quite a few built in directives and even allows you to create
     2) Providing validation behavior (i.e. required, number, email, url).
     
     3) Setting related css classes on the element (ng-valid, ng-invalid, ng-dirty, ng-pristine) including animations.
-     
-	Example 1
-	
-```
-<h2>Type in your favorite color</h2>
-<input type="text" ng-model="favoriteColor">
- <h1 ng-style="{color: favoriteColor || 'purple'}">This must be your favorite color!</h1>
-```
-          
+               
      
    * `ngList` - Text input that converts between a delimited string and an array of strings. The delimiter can be a fixed string (by default a comma) or a regular expression.
 
@@ -131,13 +136,4 @@ Angular comes with quite a few built in directives and even allows you to create
    * `ng-filter` - Selects a subset of items from array and returns it as a new array
    * To create custom filter: `NAME_OF_APP.filter 'NAME_OF_FILTER', ->`
    
-## How to include Angular in our Rails App
 
-1. Head over to [angularjs.org/](https://angularjs.org/) and download the minified version of angular and then place it in `app/assets/javascripts`
-1. In our application.js add `//= require angular.min` 
-2. In application.js remove turbolinks
-3. In application.html.erb remove `'data-turbolinks-track' => true` for the css and javascript tags
-4. In application.html.erb add to the body tag `ng-app = "NAME_OF_APP"`
-5. Create an app.js or app.js.coffee file in your `app/assets/javascripts` directory
-6. Include `NAME_OF_APP = angular.module "NAME_OF_APP", []` this array will be a list of dependencies we will include as we explore more about Angular
-7. To create a controller (in CoffeeScript) `NAME_OF_APP.controller "IndexCtrl", ($scope) ->`
