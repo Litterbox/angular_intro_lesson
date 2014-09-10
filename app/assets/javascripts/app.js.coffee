@@ -6,11 +6,24 @@ TestApp.controller "IndexCtrl", [ '$scope', ($scope) ->
 	$scope.title = "Let's learn angular and coffee!"
 	$scope.value = 0
 
-	# $scope.checked = true
+# EXAMPLE 0
+
+	# $scope.sayHi = (greeting) ->
+	# 	alert "Yo! #{greeting}"
+
+	# $scope.sayHi("Elie")
+
+# EXAMPLE 1
 
 	$scope.instructor =
 		first: "Elie"
 		last: "Schoppik"
+
+# EXAMPLE 3
+
+	# $scope.checked = true
+
+# EXAMPLE 5
 
 	$scope.friends = [{
 		name: "Bob",
@@ -25,12 +38,25 @@ TestApp.controller "IndexCtrl", [ '$scope', ($scope) ->
 		style: "blue"
 	}]
 
-	$scope.names = []
+# EXAMPLE 8
+
+	$scope.$watch "typing", ->
+		console.log $scope.typing
+		if $scope.typing == "answer"
+			# Better refactor!
+			$scope.removed = true
+			# ANYTIME YOU USE ANGULAR
+			# $(".magic").hide()
+			$scope.notice = "Well done!"
+
+# EXAMPLE 9
 
 	$scope.addOne = ->
 		$scope.value++
 	$scope.subtractOne = ->
 		$scope.value--
+
+# EXAMPLE 10
 
 	$scope.books = [ {
 		title: "Cat's Cradle",
@@ -71,14 +97,7 @@ TestApp.controller "IndexCtrl", [ '$scope', ($scope) ->
 		# # need this refactor when the array gets out of order
 		$scope.books.splice($scope.books.indexOf(book),1)
 
-	$scope.$watch "typing", ->
-		console.log $scope.typing
-		if $scope.typing == "answer"
-			# Better refactor!
-			$scope.removed = true
-			# ANYTIME YOU USE ANGULAR
-			# $(".magic").hide()
-			$scope.notice = "Well done!"
+# EXAMPLE 11
 
 	$scope.add = ->
 
@@ -92,11 +111,11 @@ TestApp.controller "IndexCtrl", [ '$scope', ($scope) ->
 		$scope.new_price = ""
 
 	$scope.cancel = ->
-			$scope.new_title = ""
-			$scope.new_rating = 0
-			$scope.new_price = ""
-]
+		$scope.new_title = ""
+		$scope.new_rating = 0
+		$scope.new_price = ""
 
+]
 TestApp.filter 'makeUppercase', ->
   (item) ->
       item.toUpperCase()
